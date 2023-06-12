@@ -10,8 +10,19 @@ import {
 } from "@mui/material";
 import DataTable from "react-data-table-component";
 import TaskList from '../Tasklist';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles(() => ({
+ tableStyles: {
+border: '1px solid #CECECE',
+'& .rdt_TableHead': {
+  backgroundImage: 'linear-gradient(red, yellow)',
+}
+ },
+}));
 
 const TaskListTable = (props) => {
+  const classes = useStyles();
     const [tasklists, setTaskLists] = useState([]);
 
    const getTaskListData = ()=>{
@@ -79,7 +90,7 @@ const TaskListTable = (props) => {
     //   </Table>
     // </TableContainer>
     <>
-    <DataTable columns={columns} data={tasklists} pagination fixedHeader/>
+    <DataTable columns={columns} data={tasklists} pagination fixedHeader className={classes.tableStyles}/>
     </>
     )
 }

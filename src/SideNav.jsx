@@ -13,12 +13,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
+import WorkIcon from '@mui/icons-material/Work';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import {useNavigate} from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles(() => ({
+  sideText: {
+    '& span': {
+      fontSize: '14px !important',
+      '& selected': {
+        fontWeight: 'bold',
+      }
+    },
+  },
+}));
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -87,6 +100,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function SideNav() {
+  const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
@@ -102,7 +116,7 @@ export default function SideNav() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" style={{ backgroundColor: '#1976d200 !important',}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -116,12 +130,18 @@ export default function SideNav() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Acme
+          <Typography variant="h1" noWrap component="div">
+            ACME
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} 
+      PaperProps={{
+    sx: {
+      backgroundColor: "#0D80D4",
+      color: '#ffffff',
+    }
+  }}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -144,9 +164,9 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                  <InboxIcon />
+                    <WorkIcon style={{color: '#ffffff'}}/>
                 </ListItemIcon>
-                <ListItemText primary="My Work Items" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="My Work Items" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> navigate('/taskslists')}>
@@ -164,9 +184,9 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                  <InboxIcon />
+                  <AssignmentIcon style={{color: '#ffffff'}}/>
                 </ListItemIcon>
-                <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </ListItem>
         </List>
