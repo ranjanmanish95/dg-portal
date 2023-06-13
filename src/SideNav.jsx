@@ -8,11 +8,15 @@ import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
+import NotificationsSharpIcon from '@mui/icons-material/NotificationsSharp';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
+import DashboardSharpIcon from '@mui/icons-material/DashboardSharp';
 import WorkIcon from '@mui/icons-material/Work';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -30,6 +34,47 @@ const useStyles = makeStyles(() => ({
         fontWeight: 'bold',
       }
     },
+  },
+  toolbarStyle: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  avatarRight:{
+    display:'flex',
+    alignItems: 'center',
+  },
+  avatarstyle: {
+    display:'flex',
+    alignItems: 'center',
+    borderRight: '2px solid #7ab4ee',
+    paddingRight: '14px',
+  },
+  navbar_menu_right_bell: {
+    position: 'relative',
+    paddingRight: '14px',
+    paddingLeft: '14px',
+    cursor: 'pointer',
+    '& svg': {
+      fontSize: '30px',
+      color: '#fff',
+      verticalAlign: 'bottom',
+    },
+    '& button': {
+      padding: '0px',
+      minWidth: 'auto',
+    },
+  },
+  navbar_menu_right_bell_value: {
+    backgroundColor: 'red',
+    color: '#fff',
+    position: 'absolute',
+    right: '15px',
+    top: '0px',
+    lineHeight: '14px',
+    width: '10px',
+    height: '10px',
+    textAlign: 'center',
+    borderRadius: '50px',
   },
 }));
 const drawerWidth = 240;
@@ -117,8 +162,8 @@ export default function SideNav() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" style={{ backgroundColor: '#1976d200 !important',}}>
-        <Toolbar>
-          <IconButton
+        <Toolbar className={classes.toolbarStyle}>
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -129,10 +174,28 @@ export default function SideNav() {
             }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
+          <Box>
           <Typography variant="h1" noWrap component="div">
             ACME
           </Typography>
+          </Box>
+          <Box className={classes.avatarRight}>
+          <Stack direction="row" spacing={1} className={classes.avatarstyle}>
+      <Avatar>M</Avatar>
+      <Typography variant="h4" noWrap component="div">
+            Manish Ranjan
+          </Typography>
+    </Stack>
+          <Box
+            className={classes.navbar_menu_right_bell}
+          >
+            <Box>
+              <span className={classes.navbar_menu_right_bell_value}></span>
+              <span><NotificationsSharpIcon /></span>
+            </Box>
+            </Box>
+            </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open} 
@@ -164,9 +227,9 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                  <InboxIcon />
+                  <DashboardSharpIcon style={{color: '#ffffff'}}/>
                 </ListItemIcon>
-                <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </ListItem>  
         <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/myworkitems')}}>

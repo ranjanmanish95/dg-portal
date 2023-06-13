@@ -35,7 +35,6 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '6px',
-    boxShadow: '0px 0px 6px rgba(123, 123, 123, 0.25) !important',
   },
   primaryBtn: {
     textTransform: 'unset !important',
