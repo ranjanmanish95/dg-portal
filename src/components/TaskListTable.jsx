@@ -1,18 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {
-    TableContainer,
-    Table,
-    TableHead,
-    TableBody,
-    TableRow,
-    TableCell,
-    Paper
-} from "@mui/material";
 import DataTable from "react-data-table-component";
 import TaskList from '../Tasklist';
+import Button from '@mui/material/Button';
+import {useNavigate, Link} from 'react-router-dom';
 
 const TaskListTable = (props) => {
     const [tasklists, setTaskLists] = useState([]);
+    const navigate = useNavigate();
 
    const getTaskListData = ()=>{
     const data = TaskList;
@@ -22,7 +16,8 @@ const TaskListTable = (props) => {
    const columns = [
     {
       name: "Request ID",
-      selector: (row)=> row.request_id,  
+      cell: (row)=> 
+      <Button onClick={(row)=>{navigate(`/myworkitems/requestid`)}}>{row.request_id}</Button>,  
     },
     {
       name: "Participant ID",
@@ -67,17 +62,6 @@ const TaskListTable = (props) => {
    },[]);
 
     return (
-    // <TableContainer component={Paper} sx={{maxHeight: '300px'}}>
-    //   <Table aria-label='simple table' stickyHeader>
-    //     <TableHead>
-    //         <TableRow>
-    //             {props.taskData.map((task)=>(<TableCell>{task}</TableCell>))}
-    //         </TableRow>
-    //     </TableHead>
-    //     <TableBody>
-    //     </TableBody>
-    //   </Table>
-    // </TableContainer>
     <>
     <DataTable columns={columns} data={tasklists} pagination fixedHeader/>
     </>
