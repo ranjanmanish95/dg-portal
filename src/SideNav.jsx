@@ -184,8 +184,8 @@ export default function SideNav() {
           <Stack direction="row" spacing={1} className={classes.avatarstyle}>
       <Avatar>M</Avatar>
       <Typography variant="h4" noWrap component="div">
-            Manish Ranjan
-          </Typography>
+            Manish Ranjan<br/><span style={{fontSize:'12px', fontWeight: '400'}}>Complaince Officer</span>
+       </Typography>
     </Stack>
           <Box
             className={classes.navbar_menu_right_bell}
@@ -201,7 +201,7 @@ export default function SideNav() {
       <Drawer variant="permanent" open={open} 
       PaperProps={{
     sx: {
-      backgroundColor: "#0D80D4",
+      backgroundColor: "#263A4C",
       color: '#ffffff',
     }
   }}>

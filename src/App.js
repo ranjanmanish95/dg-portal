@@ -5,7 +5,7 @@ import TasksLists from './pages/TasksLists';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import WorkItemDetail from './pages/WorkItemDetail';
 import Dashboard from './pages/Dashboard';
-
+import Login from './pages/Login';
 const theme = createTheme({
 });
 
@@ -48,12 +48,11 @@ function App() {
     <ThemeProvider theme={theme}>
     <BrowserRouter>
      <Routes>
+       <Route path='/login' exact element={<Login/>}/>
        <Route path='/dashboard' exact element={<Dashboard/>}/>
        <Route path='/myworkitems' element={<MyWorkItems/>}/>
        <Route path='/myworkitems/requestid' element={<WorkItemDetail/>}/>
        <Route path='/taskslists' exact element={<TasksLists/>}/>
-       {/* <WorkItemDetail/> */}
-       {/* <MyWorkItems/> */}
      </Routes>
     </BrowserRouter>
     </ThemeProvider>

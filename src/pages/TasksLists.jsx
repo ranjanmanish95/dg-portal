@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import SideNav from "../SideNav";
-import Button from "@mui/material/Button";
 import TaskListTable from "../components/TaskListTable";
 import SearchBar from "../components/SearchBar";
-import { TaskListHeadData } from "../Utilities";
-import ButtonGroup from '@mui/material/ButtonGroup';
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import TaskList from '../Tasklist';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -82,10 +80,28 @@ const useStyles = makeStyles(() => ({
 const TasksLists = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [unclaimData, setUnclaimData] = useState([]);
+  const [assignedData, setAssignedData] = useState([]);
+  const [completedData, setCompletedData] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const getTaskListData = ()=>{
+    const data = TaskList;
+    const unclaimData = data.filter((item)=>item.status === 'UNCLAIM');
+    setUnclaimData(unclaimData);
+    const assignedData = data.filter((item)=>item.status === 'NOT COMPLETED');
+    setAssignedData(assignedData);
+    const completedData = data.filter((item)=>item.status === 'COMPLETED');
+    setCompletedData(completedData);
+   }
+
+   useEffect(()=>{
+    getTaskListData(); 
+    },[]);
+
   return (
     <>
       <Box height={10} />
@@ -109,17 +125,30 @@ const TasksLists = () => {
             </Grid>
           </Grid>
           <Box height={20} />
-          <TaskListTable />
+          <TaskListTable data={unclaimData}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      Assigned Tasks
+      <Box height={20} />
+          <Grid container spacing={2}>
+            <Grid item xs={3}>
+            <SearchBar />
+            </Grid>
+          </Grid>
+          <Box height={20} />
+          <TaskListTable data={assignedData}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      Completed Tasks
+      <Box height={20} />
+          <Grid container spacing={2}>
+            <Grid item xs={3}>
+            <SearchBar />
+            </Grid>
+          </Grid>
+          <Box height={20} />
+          <TaskListTable data={completedData}/>
       </TabPanel>
-    </Box>
-       
-        </Box>
+    </Box>        
+      </Box>
       </Box>
     </>
   );
