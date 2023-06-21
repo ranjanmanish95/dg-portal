@@ -1,18 +1,11 @@
 import React from 'react'
 import SideNav from "../SideNav";
 import Box from "@mui/material/Box";
-import { makeStyles } from '@mui/styles';
 import axios from 'axios';
-const useStyles = makeStyles(() => ({
-  headingone: {
-    marginTop: '3rem !important',
-    color: '#1F384C',
-  },
-}));
 
 const Dashboard = () => {
   const refreshUrl="http://14.97.142.161:8080/api/refresh-tokens"
-  let token = '';
+  // let token = '';
   let ts = new Date().getTime();
   let data = {
     "userName": "dg@celestialsys.com",

@@ -1,11 +1,8 @@
 import React from 'react'
 import Box from "@mui/material/Box";
 import SideNav from "../SideNav";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { FormControl, InputLabel, Typography} from "@mui/material";
-import InputBase from "@mui/material/InputBase";
-import { alpha, styled } from "@mui/material/styles";
+import { FormControl, Typography} from "@mui/material";
 import Input from '@mui/material/Input';
 import { makeStyles } from '@mui/styles';
 import Grid from "@mui/material/Grid";
