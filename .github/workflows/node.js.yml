@@ -38,6 +38,7 @@ jobs:
     - name: Deploy with gh-pages  
       uses: JamesIves/github-pages-deploy-action@v4.4.2
       with:
+        branch: gh-pages
         folder: build # The folder the action should deploy. 
     # - run: |
     #     git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
