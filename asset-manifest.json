@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dg-portal/static/css/main.e44b0af0.css",
-    "main.js": "/dg-portal/static/js/main.d7c7eec1.js",
+    "main.js": "/dg-portal/static/js/main.996c7dd2.js",
     "static/js/787.3e8415ec.chunk.js": "/dg-portal/static/js/787.3e8415ec.chunk.js",
     "static/media/Poppins-Regular.otf": "/dg-portal/static/media/Poppins-Regular.1421a94e04ced16b1ffc.otf",
     "static/media/Poppins-Medium.otf": "/dg-portal/static/media/Poppins-Medium.2175351766d1d5e18c15.otf",
@@ -9,11 +9,11 @@
     "static/media/acme_main_logo2.png": "/dg-portal/static/media/acme_main_logo2.462b671b2018bb27a951.png",
     "index.html": "/dg-portal/index.html",
     "main.e44b0af0.css.map": "/dg-portal/static/css/main.e44b0af0.css.map",
-    "main.d7c7eec1.js.map": "/dg-portal/static/js/main.d7c7eec1.js.map",
+    "main.996c7dd2.js.map": "/dg-portal/static/js/main.996c7dd2.js.map",
     "787.3e8415ec.chunk.js.map": "/dg-portal/static/js/787.3e8415ec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e44b0af0.css",
-    "static/js/main.d7c7eec1.js"
+    "static/js/main.996c7dd2.js"
   ]
 }
