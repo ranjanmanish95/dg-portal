@@ -36,7 +36,7 @@ jobs:
         npm run build --if-present
         npm test
     - name: Deploy with gh-pages  
-      uses: JamesIves/github-pages-deploy-action@4.4.2
+      uses: JamesIves/github-pages-deploy-action@v4.4.2
       with:
         folder: build # The folder the action should deploy. 
     # - run: |
