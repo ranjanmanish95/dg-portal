@@ -4,31 +4,31 @@ import Box from "@mui/material/Box";
 
 
 const Dashboard = () => {
-//   const refreshUrl="http://14.97.142.161:8080/api/refresh-tokens"
-//   // let token = '';
-//   let ts = new Date().getTime();
-//   let data = {
-//     "userName": "dg@celestialsys.com",
-//     "password": "test",
-//     "clientOrgRef": "Data Governance"
-// }
+  const refreshUrl="http://14.97.142.161:8080/api/refresh-tokens"
+  // let token = '';
+  let ts = new Date().getTime();
+  let data = {
+    "userName": "dg@celestialsys.com",
+    "password": "test",
+    "clientOrgRef": "Data Governance"
+}
 
-// fetch.post(refreshUrl, {
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `YELLOWFIN ts=${ts}, nonce=123`,
-//         'Accept': 'application/vnd.yellowfin.api-v2+json',
-//         "Access-Control-Allow-Origin": "*",
-//         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-//     },
-//     data
-// })      
-// .then((response) => {
-//     console.log('refreshtokendata',response.json());
-// })
-// .catch((error) => {
-//     console.log('error finding user', error);
-// })
+fetch.post(refreshUrl, {
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `YELLOWFIN ts=${ts}, nonce=123`,
+        'Accept': 'application/vnd.yellowfin.api-v2+json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    },
+    data
+})      
+.then((response) => {
+    console.log('refreshtokendata',response.json());
+})
+.catch((error) => {
+    console.log('error finding user', error);
+})
 
   return (
     <Box sx={{ display: "flex" }}>
