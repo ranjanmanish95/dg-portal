@@ -9,10 +9,10 @@ const Dashboard = () => {
 // const [js, setJs] = useState('')
 // const [srcDoc, setSrcDoc] = useState('')  
 // const [accessToken, setAccessToken] = useState('')
-// const [refreshToken, setRefreshToken] = useState('')
+const [refreshToken, setRefreshToken] = useState('')
 // const [loginToken, setLoginToken] = useState('')
 
-// const YELLOWFIN_URL="http://14.97.142.161:8080";
+const refresh_url="http://14.97.142.161:8080/api/refresh-tokens";
 
 //   useEffect(()=>{
 //     const timeout = setTimeout(() => {
@@ -27,13 +27,46 @@ const Dashboard = () => {
 //     return () => clearTimeout(timeout)
 //   }, [html, css, js]) 
 
-//   function getRefreshToken(){
-//     fetch('refresh_token')
-//       .then(response => response.json())
-//       .then(data => {
-//         setRefreshToken(data)
-//       });
-//   }
+  function getRefreshToken(){
+
+    // fetch('refresh_token')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setRefreshToken(data)
+    //   });
+    
+    let ts = new Date().getTime();
+
+    let data = {
+      userName: "dg@celestialsys.com",
+      password: "test",
+      clientOrgRef: "Data Governance"
+     }
+
+    fetch(refresh_url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `YELLOWFIN ts=${ts}, nonce=123`,
+        'Accept': 'application/vnd.yellowfin.api-v2+json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    },
+})      
+.then((response) => response.json())
+.then((data)=>{
+  console.log('refreshtokendata', data);
+}) 
+.catch((error) => {
+    console.log('error finding user', error);
+})
+  }
+
+ useEffect(()=>{
+  getRefreshToken();
+ })
+
 //   function getAccessToken(){
 //     fetch('access_token?refresh_token='+encodeURIComponent(refreshToken))
 //       .then(response => response.json())
