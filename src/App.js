@@ -48,11 +48,11 @@ function App() {
     <ThemeProvider theme={theme}>
     <BrowserRouter>
      <Routes>
-       <Route path='/login' exact element={<Login/>}/>
-       <Route path='/' exact element={<Dashboard/>}/>
+       <Route path='/' element={<Login/>}/>
+       <Route path='/dashboard' exact element={<Dashboard/>}/>
        <Route path='/myworkitems' element={<MyWorkItems/>}/>
        <Route path='/myworkitems/requestid' element={<WorkItemDetail/>}/>
-       <Route path='/taskslists' exact element={<TasksLists/>}/>
+       <Route path='/taskslists' element={<TasksLists/>}/>
      </Routes>
     </BrowserRouter>
     </ThemeProvider>

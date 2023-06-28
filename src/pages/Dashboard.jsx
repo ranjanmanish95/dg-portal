@@ -1,9 +1,55 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import SideNav from "../SideNav";
 import Box from "@mui/material/Box";
 
 
 const Dashboard = () => {
+// const [html, setHtml] = useState('')
+// const [css, setCss] = useState('')
+// const [js, setJs] = useState('')
+// const [srcDoc, setSrcDoc] = useState('')  
+// const [accessToken, setAccessToken] = useState('')
+// const [refreshToken, setRefreshToken] = useState('')
+// const [loginToken, setLoginToken] = useState('')
+
+// const YELLOWFIN_URL="http://14.97.142.161:8080";
+
+//   useEffect(()=>{
+//     const timeout = setTimeout(() => {
+//       setSrcDoc(`
+//         <html>
+//           <body>${html}</body>
+//           <style>${css}</style>
+//           <script>${js}</script>
+//         </html>
+//       `)
+//     }, 250)
+//     return () => clearTimeout(timeout)
+//   }, [html, css, js]) 
+
+//   function getRefreshToken(){
+//     fetch('refresh_token')
+//       .then(response => response.json())
+//       .then(data => {
+//         setRefreshToken(data)
+//       });
+//   }
+//   function getAccessToken(){
+//     fetch('access_token?refresh_token='+encodeURIComponent(refreshToken))
+//       .then(response => response.json())
+//       .then(data => {
+//         setAccessToken(data)
+//       });
+//   }
+//   function getLoginToken(){
+//     fetch('login_token?access_token='+encodeURIComponent(accessToken))
+//       .then(response => response.json())
+//       .then(data => {
+//         setLoginToken(data)
+//       });
+//   }
+  // <script type="text/javascript" src="http://localhost/JsAPI?dashUUID=e9a6ab0a-bcb0-4fe6-9663-4dd33e58f08e&token=<TOKEN>"></script>
+
 //   const refreshUrl="http://14.97.142.161:8080/api/refresh-tokens"
 //   // let token = '';
 //   let ts = new Date().getTime();

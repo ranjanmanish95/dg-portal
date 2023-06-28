@@ -178,7 +178,7 @@ export default function SideNav() {
           <Stack direction="row" spacing={1} className={classes.avatarstyle}>
       <Avatar>M</Avatar>
       <Typography variant="h4" noWrap component="div">
-            Manish Ranjan<br/><span style={{fontSize:'12px', fontWeight: '400'}}>Complaince Officer</span>
+            Matt Thomas<br/><span style={{fontSize:'12px', fontWeight: '400'}}>Complaince Officer</span>
        </Typography>
     </Stack>
           <Box
@@ -205,27 +205,7 @@ export default function SideNav() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/')}}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <DashboardSharpIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
-              </ListItemButton>
-            </ListItem>  
+        <List>  
         <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/myworkitems')}}>
               <ListItemButton
                 sx={{
@@ -264,6 +244,26 @@ export default function SideNav() {
                   <AssignmentIcon style={{color: '#ffffff'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/dashboard')}}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <DashboardSharpIcon style={{color: '#ffffff'}}/>
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </ListItem>
         </List>

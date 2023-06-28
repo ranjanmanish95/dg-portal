@@ -1,6 +1,43 @@
-import React from 'react'
+import React, {useState} from 'react'
 import MainLogo from '../images/acme_main_logo2.png'
+import {useNavigate} from 'react-router-dom';
+
 const Login = () => {
+const navigate = useNavigate();    
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+
+const emailInput = (e)=>{
+ setEmail(e.target.value)
+}
+
+const passwordInput = (e)=>{
+  setPassword(e.target.value)
+}
+
+const loginUser = async ()=>{
+//  const data = {
+//     email : email,
+//     password: password
+//  }   
+// const response = await fetch('http://localhost:5000/login', {
+//                 method: "POST",
+//                 // body: JSON.stringify(data),
+//                 body: data,
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 }
+//               }); 
+// const resData = await response.json();            
+// if(resData.message === 'Login Successful'){
+// alert('Login Successful');
+// navigate('/dashboard');
+// } else {
+// alert('Invalid Credentials');
+// }    
+  navigate('/myworkitems');        
+}
+
   return (
     <div id="login" style={{height:"100vh"}}>
         <div class="row p-4">
@@ -15,7 +52,10 @@ const Login = () => {
                         type="text" 
                         class="form-control" 
                         placeholder="Enter username" 
-                        name="username"/>
+                        name="username"
+                        value={email}
+                        onChange={emailInput}
+                        />
                     </div>
                     <div class="form-group mt-4">
                         <div class="d-flex justify-content-between">
@@ -26,10 +66,13 @@ const Login = () => {
                         type="password" 
                         class="form-control" 
                         placeholder="Enter password" 
-                        name="password"/>
+                        name="password"
+                        value={password}
+                        onChange={passwordInput}
+                        />
                     </div>
                     <div class="mt-4 ml-4 text-white text-center">
-                        <button class="btn btn-primary">Login</button>
+                        <button class="btn btn-primary" onClick={loginUser}>Login</button>
                     </div>
                 </form>
             </div>
