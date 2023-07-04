@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState, useEffect} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -148,9 +149,26 @@ export default function SideNav() {
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
+  const [loginToken, setLoginToken] = useState('');
+  const LOGIN_TOKEN_URL = 'http://localhost:5000/loginToken';
+  const YELLOWFIN_URL="http://14.97.142.161:8080";
+
+ 
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  useEffect(()=>{
+    const fetchLoginToken = async ()=>{
+      const loginResponse = await fetch(LOGIN_TOKEN_URL);
+      const loginData = await loginResponse.json();
+      const loginToken = loginData.loginToken;
+      console.log('loginToken', loginToken);
+      setLoginToken(loginToken);
+    }
+    fetchLoginToken();
+   },[]);
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -246,7 +264,7 @@ export default function SideNav() {
                 <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/dashboard')}}>
+            <a disablePadding sx={{ display: 'block' }} href={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}`} target="_blank" rel="noreferrer">
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -265,7 +283,7 @@ export default function SideNav() {
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
-            </ListItem>
+            </a>
         </List>
         <Divider />
       </Drawer>
