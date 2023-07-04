@@ -70,7 +70,7 @@ const WorkItemDetail = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Box>
         <SideNav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }} style={{paddingLeft: '0px', paddingRight: '0px'}}>
         <Box height={30} />

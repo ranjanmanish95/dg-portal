@@ -46,8 +46,9 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(() => ({
   headingone: {
-    marginTop: '3rem !important',
-    color: '#1F384C',
+    color: '#1976d2',
+    fontSize: '21px !important',
+    textAlign: 'center',
   },
   btngroup: {
     border: '1px solid #d4d4d4',
@@ -74,7 +75,18 @@ const useStyles = makeStyles(() => ({
     fontStyle: 'normal',
     fontSize: '12px', 
     color: '#787F89 !important'
-  }
+  },
+  searchBarStyle: {
+    margin: '0px auto 20px auto !important',
+  },
+  tabbingStyle: {
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    '& button': {
+      '&:focus': {
+        outline: 'none',
+      },
+    },
+  },
 }));
 
 const TasksLists = () => {
@@ -105,12 +117,12 @@ const TasksLists = () => {
   return (
     <>
       <Box height={10} />
-      <Box sx={{ display: "flex" }}>
+      <Box>
         <SideNav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Typography variant="h1" className={classes.headingone}>Task List</Typography>
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box className={classes.tabbingStyle}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Un-Assigned Tasks" {...a11yProps(0)} />
           <Tab label="Assigned Tasks" {...a11yProps(1)} />
@@ -120,7 +132,7 @@ const TasksLists = () => {
       <TabPanel value={value} index={0}>
       <Box height={20} />
           <Grid container spacing={2}>
-            <Grid item xs={3}>
+            <Grid item xs={4} className={classes.searchBarStyle}>
             <SearchBar />
             </Grid>
           </Grid>
@@ -130,7 +142,7 @@ const TasksLists = () => {
       <TabPanel value={value} index={1}>
       <Box height={20} />
           <Grid container spacing={2}>
-            <Grid item xs={3}>
+            <Grid item xs={4} className={classes.searchBarStyle}>
             <SearchBar />
             </Grid>
           </Grid>
@@ -140,7 +152,7 @@ const TasksLists = () => {
       <TabPanel value={value} index={2}>
       <Box height={20} />
           <Grid container spacing={2}>
-            <Grid item xs={3}>
+            <Grid item xs={4} className={classes.searchBarStyle}>
             <SearchBar />
             </Grid>
           </Grid>
