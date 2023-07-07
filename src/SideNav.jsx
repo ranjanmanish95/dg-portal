@@ -22,13 +22,13 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
   sideText: {
     '& span': {
-      fontSize: '18px !important',
+      fontSize: '14px !important',
       fontWeight: '600',
       '& selected': {
         fontWeight: 'bold',
@@ -39,12 +39,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
-  avatarRight:{
-    display:'flex',
+  avatarRight: {
+    display: 'flex',
     alignItems: 'center',
   },
   avatarstyle: {
-    display:'flex',
+    display: 'flex',
     alignItems: 'center',
     borderRight: '2px solid #7ab4ee',
     paddingRight: '14px',
@@ -78,11 +78,18 @@ const useStyles = makeStyles(() => ({
   },
   navLinkStyleUl: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    marginTop: '75px !important',
-    paddingRight: '4px !important',
+    justifyContent: 'flex-start',
+    marginTop: '60px !important',
+    paddingLeft: '4px !important',
+    '& .MuiListItemIcon-root': {
+      marginRight: '16px',
+    },
     '& li': {
       width: 'auto',
+      color: '#6C6C6C',
+      '& svg': {
+        color: '#6C6C6C',
+      },
     },
   },
 }));
@@ -159,9 +166,9 @@ export default function SideNav() {
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
-  const [loginToken, setLoginToken] = useState('');
-  const LOGIN_TOKEN_URL = 'http://localhost:5000/loginToken';
-  const YELLOWFIN_URL="http://14.97.142.161:8080";
+  // const [loginToken, setLoginToken] = useState('');
+  // const LOGIN_TOKEN_URL = 'http://localhost:5000/loginToken';
+  // const YELLOWFIN_URL="http://14.97.142.161:8080";
 
  
 
@@ -169,21 +176,21 @@ export default function SideNav() {
     setOpen(false);
   };
 
-  useEffect(()=>{
-    const fetchLoginToken = async ()=>{
-      const loginResponse = await fetch(LOGIN_TOKEN_URL);
-      const loginData = await loginResponse.json();
-      const loginToken = loginData.loginToken;
-      console.log('loginToken', loginToken);
-      setLoginToken(loginToken);
-    }
-    fetchLoginToken();
-   },[]);
+  // useEffect(()=>{
+  //   const fetchLoginToken = async ()=>{
+  //     const loginResponse = await fetch(LOGIN_TOKEN_URL);
+  //     const loginData = await loginResponse.json();
+  //     const loginToken = loginData.loginToken;
+  //     console.log('loginToken', loginToken);
+  //     setLoginToken(loginToken);
+  //   }
+  //   fetchLoginToken();
+  //  },[]);
 
   return (
     <Box>
       <CssBaseline />
-      <AppBar position="fixed" style={{ backgroundColor: '#1976d200 !important',}}>
+      <AppBar position="fixed" style={{ backgroundColor: '#1976d200 !important', }}>
         <Toolbar className={classes.toolbarStyle}>
           {/* <IconButton
             color="inherit"
@@ -198,26 +205,26 @@ export default function SideNav() {
             <MenuIcon />
           </IconButton> */}
           <Box>
-          <Typography variant="h1" noWrap component="div">
-            ACME
-          </Typography>
+            <Typography variant="h1" noWrap component="div">
+              ACME
+            </Typography>
           </Box>
           <Box className={classes.avatarRight}>
-          <Stack direction="row" spacing={1} className={classes.avatarstyle}>
-      <Avatar>M</Avatar>
-      <Typography variant="h4" noWrap component="div">
-            Matt Thomas<br/><span style={{fontSize:'12px', fontWeight: '400'}}>Complaince Officer</span>
-       </Typography>
-    </Stack>
-          <Box
-            className={classes.navbar_menu_right_bell}
-          >
-            <Box>
-              <span className={classes.navbar_menu_right_bell_value}></span>
-              <span><NotificationsSharpIcon /></span>
+            <Stack direction="row" spacing={1} className={classes.avatarstyle}>
+              <Avatar>M</Avatar>
+              <Typography variant="h4" noWrap component="div">
+                Matt Thomas<br /><span style={{ fontSize: '12px', fontWeight: '400' }}>Complaince Officer</span>
+              </Typography>
+            </Stack>
+            <Box
+              className={classes.navbar_menu_right_bell}
+            >
+              <Box>
+                <span className={classes.navbar_menu_right_bell_value}></span>
+                <span><NotificationsSharpIcon /></span>
+              </Box>
             </Box>
-            </Box>
-            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
       {/* <Drawer variant="permanent" open={open} 
@@ -227,75 +234,75 @@ export default function SideNav() {
       color: '#ffffff',
     }
   }}> */}
-        {/* <DrawerHeader>
+      {/* <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader> */}
-        {/* <Divider /> */}
-        <List className={classes.navLinkStyleUl}>  
-        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/myworkitems')}}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                {/* <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                    <WorkIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon> */}
-                <ListItemText primary="My Work Items" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> navigate('/taskslists')}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                {/* <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <AssignmentIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon> */}
-                <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
-              </ListItemButton>
-            </ListItem>
-            <a disablePadding sx={{ display: 'block' }} href={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}&disableheader=true&entry=TIMELINE`} target="_blank" rel="noreferrer">
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                {/* <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <DashboardSharpIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon> */}
-                <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
-              </ListItemButton>
-            </a>
-        </List>
-        {/* <Divider /> */}
+      {/* <Divider /> */}
+      <List className={classes.navLinkStyleUl}>
+        <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate('/dashboard') }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <DashboardSharpIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate('/myworkitems') }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <WorkIcon />
+            </ListItemIcon>
+            <ListItemText primary="My Work Items" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigate('/taskslists')}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <AssignmentIcon />
+            </ListItemIcon>
+            <ListItemText primary="Tasks List" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      {/* <Divider /> */}
       {/* </Drawer> */}
     </Box>
   );

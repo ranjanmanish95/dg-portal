@@ -78,6 +78,9 @@ const useStyles = makeStyles(() => ({
   },
   searchBarStyle: {
     margin: '0px auto 20px auto !important',
+    '& .MuiTextField-root': {
+      backgroundColor: '#fff',
+    },
   },
   tabbingStyle: {
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
