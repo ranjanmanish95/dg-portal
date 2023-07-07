@@ -49,6 +49,7 @@ function App() {
     <BrowserRouter>
      <Routes>
        <Route path='/' element={<Login/>}/>
+       <Route path='/dashboard' element={<Dashboard/>}/>
        <Route path='/myworkitems' element={<MyWorkItems/>}/>
        <Route path='/myworkitems/requestid' element={<WorkItemDetail/>}/>
        <Route path='/taskslists' element={<TasksLists/>}/>

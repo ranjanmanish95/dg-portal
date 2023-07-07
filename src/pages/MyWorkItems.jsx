@@ -70,6 +70,9 @@ const useStyles = makeStyles(() => ({
   },
   searchBarStyle: {
     margin: '10px auto 20px auto !important',
+    '& .MuiTextField-root': {
+      backgroundColor: '#fff',
+    },
   },
 }));
 
