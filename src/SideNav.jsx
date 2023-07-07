@@ -28,7 +28,8 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles(() => ({
   sideText: {
     '& span': {
-      fontSize: '14px !important',
+      fontSize: '18px !important',
+      fontWeight: '600',
       '& selected': {
         fontWeight: 'bold',
       }
@@ -74,6 +75,15 @@ const useStyles = makeStyles(() => ({
     height: '10px',
     textAlign: 'center',
     borderRadius: '50px',
+  },
+  navLinkStyleUl: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: '75px !important',
+    paddingRight: '4px !important',
+    '& li': {
+      width: 'auto',
+    },
   },
 }));
 const drawerWidth = 240;
@@ -171,7 +181,7 @@ export default function SideNav() {
    },[]);
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <CssBaseline />
       <AppBar position="fixed" style={{ backgroundColor: '#1976d200 !important',}}>
         <Toolbar className={classes.toolbarStyle}>
@@ -210,20 +220,20 @@ export default function SideNav() {
             </Box>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open} 
+      {/* <Drawer variant="permanent" open={open} 
       PaperProps={{
     sx: {
       backgroundColor: "#263A4C",
       color: '#ffffff',
     }
-  }}>
-        <DrawerHeader>
+  }}> */}
+        {/* <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>  
+        </DrawerHeader> */}
+        {/* <Divider /> */}
+        <List className={classes.navLinkStyleUl}>  
         <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/myworkitems')}}>
               <ListItemButton
                 sx={{
@@ -232,7 +242,7 @@ export default function SideNav() {
                   px: 2.5,
                 }}
               >
-                <ListItemIcon
+                {/* <ListItemIcon
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -240,7 +250,7 @@ export default function SideNav() {
                   }}
                 >
                     <WorkIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon>
+                </ListItemIcon> */}
                 <ListItemText primary="My Work Items" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
               </ListItemButton>
             </ListItem>
@@ -252,7 +262,7 @@ export default function SideNav() {
                   px: 2.5,
                 }}
               >
-                <ListItemIcon
+                {/* <ListItemIcon
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -260,11 +270,11 @@ export default function SideNav() {
                   }}
                 >
                   <AssignmentIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon>
+                </ListItemIcon> */}
                 <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </ListItem>
-            <a disablePadding sx={{ display: 'block' }} href={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}`} target="_blank" rel="noreferrer">
+            <a disablePadding sx={{ display: 'block' }} href={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}&disableheader=true&entry=TIMELINE`} target="_blank" rel="noreferrer">
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -272,7 +282,7 @@ export default function SideNav() {
                   px: 2.5,
                 }}
               >
-                <ListItemIcon
+                {/* <ListItemIcon
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -280,13 +290,13 @@ export default function SideNav() {
                   }}
                 >
                   <DashboardSharpIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon>
+                </ListItemIcon> */}
                 <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </a>
         </List>
-        <Divider />
-      </Drawer>
+        {/* <Divider /> */}
+      {/* </Drawer> */}
     </Box>
   );
 }

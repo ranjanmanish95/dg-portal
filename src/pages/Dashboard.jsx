@@ -35,7 +35,7 @@ const Dashboard = () => {
   },[]);
   
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box>
     <SideNav />
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}> 
     {/* <iframe title="dashboard" src={`http://14.97.142.161:8080/RunDashboard.i4?dashUUID=d2fa9718-841a-47ed-a4e7-bed742b26aaa&token=${loginToken}`}  width="100%" style={{height:"100vh", marginTop: "3rem"}}></iframe> */}
