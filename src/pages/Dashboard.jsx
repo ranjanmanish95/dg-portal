@@ -7,7 +7,7 @@ const Dashboard = () => {
 
   const [loginToken, setLoginToken] = useState('');
   const LOGIN_TOKEN_URL = 'http://localhost:5000/loginToken';
-  // const YELLOWFIN_URL="http://14.97.142.161:8080";
+  const YELLOWFIN_URL="http://14.97.142.161:8080";
 
   const fetchLoginToken = async ()=>{
     const loginResponse = await fetch(LOGIN_TOKEN_URL);
@@ -40,6 +40,7 @@ const Dashboard = () => {
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}> 
     {/* <iframe title="dashboard" src={`http://14.97.142.161:8080/RunDashboard.i4?dashUUID=d2fa9718-841a-47ed-a4e7-bed742b26aaa&token=${loginToken}`}  width="100%" style={{height:"100vh", marginTop: "3rem"}}></iframe> */}
     {/* <div id="YellowfinDiv"></div> */}
+    {/* <iframe src={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}`}  width="100%" style={{height:'100vh'}}/> */}
     <Box height={20}/>
     </Box>
    </Box>

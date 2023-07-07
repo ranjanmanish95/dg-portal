@@ -162,22 +162,23 @@ export default function SideNav() {
   const [loginToken, setLoginToken] = useState('');
   const LOGIN_TOKEN_URL = 'http://localhost:5000/loginToken';
   const YELLOWFIN_URL="http://14.97.142.161:8080";
+  const CREATE_SSO_TOKEN_URL = "http://14.97.142.161:8080/api/rpc/login-tokens/create-sso-token"
 
- 
 
   const handleDrawerClose = () => {
     setOpen(false);
   };
 
+  const fetchLoginToken = async ()=>{
+    const loginResponse = await fetch(LOGIN_TOKEN_URL);
+    const loginData = await loginResponse.json();
+    const loginToken = loginData.loginToken;
+    console.log('loginToken', loginToken);
+    setLoginToken(loginToken);
+  }
+
   useEffect(()=>{
-    const fetchLoginToken = async ()=>{
-      const loginResponse = await fetch(LOGIN_TOKEN_URL);
-      const loginData = await loginResponse.json();
-      const loginToken = loginData.loginToken;
-      console.log('loginToken', loginToken);
-      setLoginToken(loginToken);
-    }
-    fetchLoginToken();
+      fetchLoginToken();
    },[]);
 
   return (
@@ -274,7 +275,9 @@ export default function SideNav() {
                 <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </ListItem>
-            <a disablePadding sx={{ display: 'block' }} href={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}&disableheader=true&entry=TIMELINE`} target="_blank" rel="noreferrer">
+            {/* <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/dashboard')}}> */}
+            {/* <a disablePadding sx={{ display: 'block' }} href={`${YELLOWFIN_URL}/logon.i4?LoginWebserviceId=${loginToken}&disableheader=true&entry=DASHBOARD`} target="_self" rel="noreferrer"> */}
+            <a disablePadding sx={{ display: 'block' }} href="http://14.97.142.161:8080/logon.i4?LoginWebserviceId=56194040b25d22763e20b40632c81442&disableheader=true&entry=DASHBOARD" target="_self" rel="noreferrer">
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -294,6 +297,7 @@ export default function SideNav() {
                 <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
             </a>
+            {/* </ListItem> */}
         </List>
         {/* <Divider /> */}
       {/* </Drawer> */}
