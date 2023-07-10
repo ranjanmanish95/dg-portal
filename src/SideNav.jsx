@@ -108,7 +108,7 @@ export default function SideNav(props) {
   const classes = useStyles();
   const [open] = React.useState(true);
   const navigate = useNavigate();
-  const YELLOWFIN_URL="http://14.97.142.161:8080";
+  const YELLOWFIN_URL="http://192.168.6.56:8080";
   const loginToken = props.loginToken;
 
   return (
