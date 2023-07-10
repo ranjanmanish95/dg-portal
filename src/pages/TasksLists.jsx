@@ -78,6 +78,9 @@ const useStyles = makeStyles(() => ({
   },
   searchBarStyle: {
     margin: '0px auto 20px auto !important',
+    '& .MuiTextField-root': {
+      backgroundColor: '#fff',
+    },
   },
   tabbingStyle: {
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
@@ -89,13 +92,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const TasksLists = () => {
+const TasksLists = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [unclaimData, setUnclaimData] = useState([]);
   const [assignedData, setAssignedData] = useState([]);
   const [completedData, setCompletedData] = useState([]);
-
+  const loginToken =props.loginToken;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -118,7 +121,7 @@ const TasksLists = () => {
     <>
       <Box height={10} />
       <Box>
-        <SideNav />
+        <SideNav loginToken={loginToken}/>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Typography variant="h1" className={classes.headingone}>Task List</Typography>
     <Box sx={{ width: '100%' }}>

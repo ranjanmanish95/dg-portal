@@ -15,26 +15,7 @@ const passwordInput = (e)=>{
   setPassword(e.target.value)
 }
 
-const loginUser = async ()=>{
-//  const data = {
-//     email : email,
-//     password: password
-//  }   
-// const response = await fetch('http://localhost:5000/login', {
-//                 method: "POST",
-//                 // body: JSON.stringify(data),
-//                 body: data,
-//                 headers: {
-//                     "Content-Type": "application/json"
-//                 }
-//               }); 
-// const resData = await response.json();            
-// if(resData.message === 'Login Successful'){
-// alert('Login Successful');
-// navigate('/dashboard');
-// } else {
-// alert('Invalid Credentials');
-// }    
+const loginUser = async ()=>{  
   navigate('/myworkitems');        
 }
 

@@ -70,13 +70,16 @@ const useStyles = makeStyles(() => ({
   },
   searchBarStyle: {
     margin: '10px auto 20px auto !important',
+    '& .MuiTextField-root': {
+      backgroundColor: '#fff',
+    },
   },
 }));
 
-const TasksLists = () => {
+const TasksLists = (props) => {
   const classes = useStyles();
   const [completedData, setCompletedData] = useState([]);
-
+  const loginToken = props.loginToken;
   const getTaskListData = ()=>{
     const data = TaskList;
     const completedData = data.filter((item)=>item.status === 'COMPLETED');
@@ -91,7 +94,7 @@ const TasksLists = () => {
     <>
       <Box height={10} />
       <Box>
-        <SideNav />
+        <SideNav loginToken={loginToken}/>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Typography variant="h1" className={classes.headingone}>My Work Items</Typography>
     <Box sx={{ width: '100%' }}>
