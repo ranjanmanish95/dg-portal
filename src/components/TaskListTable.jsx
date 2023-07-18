@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import DataTable from "react-data-table-component";
-import TaskList from '../Tasklist';
 import Button from '@mui/material/Button';
 import {useNavigate} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
@@ -15,14 +14,9 @@ border: '1px solid #CECECE',
 }));
 
 const TaskListTable = (props) => {
+  const tasklistdata = props.data;
   const classes = useStyles();
-    const [tasklists, setTaskLists] = useState([]);
-    const navigate = useNavigate();
-
-   const getTaskListData = ()=>{
-    const data = TaskList;
-    setTaskLists(data);
-   }
+  const navigate = useNavigate();
 
    const columns = [
     {
@@ -68,13 +62,9 @@ const TaskListTable = (props) => {
     },
    ];
 
-   useEffect(()=>{
-   getTaskListData(); 
-   },[]);
-
     return (
     <>
-    <DataTable columns={columns} data={tasklists} pagination fixedHeader className={classes.tableStyles}/>
+    <DataTable columns={columns} data={tasklistdata} pagination fixedHeader className={classes.tableStyles}/>
     </>
     )
 }

@@ -1,10 +1,12 @@
 import './App.css';
-import MyWorkItems from './pages/MyWorkItems';
+import CompletedTasks from './pages/MyWorkItems';
+import DashboardT from './pages/Dashboard';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import TasksLists from './pages/TasksLists';
+import PendingTasks from './pages/TasksLists';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import WorkItemDetail from './pages/WorkItemDetail';
-import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import { Dashboard } from '@mui/icons-material';
 
 const theme = createTheme({
 });
@@ -43,17 +45,17 @@ theme.typography.body1 = {
 };
 
 function App() {
+
   return (
     <>
     <ThemeProvider theme={theme}>
     <BrowserRouter>
      <Routes>
-       <Route path='/dashboard' exact element={<Dashboard/>}/>
-       <Route path='/myworkitems' element={<MyWorkItems/>}/>
+       <Route path='/' exact element={<Login/>}/>
+       <Route path='/dashboard' element={<DashboardT/>}/>
+       <Route path='/completedtasks' element={<CompletedTasks/>}/>
        <Route path='/myworkitems/requestid' element={<WorkItemDetail/>}/>
-       <Route path='/taskslists' exact element={<TasksLists/>}/>
-       {/* <WorkItemDetail/> */}
-       {/* <MyWorkItems/> */}
+       <Route path='/pendingtasks' element={<PendingTasks/>}/>
      </Routes>
     </BrowserRouter>
     </ThemeProvider>

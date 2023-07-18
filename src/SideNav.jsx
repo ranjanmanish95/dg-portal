@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import NotificationsSharpIcon from '@mui/icons-material/NotificationsSharp';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
@@ -22,7 +21,6 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import {useNavigate} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 
@@ -150,10 +148,6 @@ export default function SideNav() {
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -163,18 +157,6 @@ export default function SideNav() {
       <CssBaseline />
       <AppBar position="fixed" style={{ backgroundColor: '#1976d200 !important',}}>
         <Toolbar className={classes.toolbarStyle}>
-          {/* <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Box>
           <Typography variant="h1" noWrap component="div">
             ACME
@@ -184,8 +166,8 @@ export default function SideNav() {
           <Stack direction="row" spacing={1} className={classes.avatarstyle}>
       <Avatar>M</Avatar>
       <Typography variant="h4" noWrap component="div">
-            Manish Ranjan
-          </Typography>
+            Matt Thomas <br/><span>Chief Complaince Officer</span>
+      </Typography>
     </Stack>
           <Box
             className={classes.navbar_menu_right_bell}
@@ -201,7 +183,8 @@ export default function SideNav() {
       <Drawer variant="permanent" open={open} 
       PaperProps={{
     sx: {
-      backgroundColor: "#0D80D4",
+      // backgroundColor: "#0D80D4",
+      backgroundColor: "#263A4C",
       color: '#ffffff',
     }
   }}>
@@ -231,28 +214,8 @@ export default function SideNav() {
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
               </ListItemButton>
-            </ListItem>  
-        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/myworkitems')}}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                    <WorkIcon style={{color: '#ffffff'}}/>
-                </ListItemIcon>
-                <ListItemText primary="My Work Items" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
-              </ListItemButton>
             </ListItem>
-            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> navigate('/taskslists')}>
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> navigate('/pendingtasks')}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -269,7 +232,27 @@ export default function SideNav() {
                 >
                   <AssignmentIcon style={{color: '#ffffff'}}/>
                 </ListItemIcon>
-                <ListItemText primary="Tasks Lists" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
+                <ListItemText primary="Pending Tasks" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText}/>
+              </ListItemButton>
+            </ListItem>     
+        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=> {navigate('/completedtasks')}}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                    <WorkIcon style={{color: '#ffffff'}}/>
+                </ListItemIcon>
+                <ListItemText primary="Completed Tasks" sx={{ opacity: open ? 1 : 0 }} className={classes.sideText} />
               </ListItemButton>
             </ListItem>
         </List>
