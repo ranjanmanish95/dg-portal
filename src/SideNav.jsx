@@ -159,7 +159,7 @@ export default function SideNav() {
         <Toolbar className={classes.toolbarStyle}>
           <Box>
           <Typography variant="h1" noWrap component="div">
-            ACME
+            ACME Bank, Inc.
           </Typography>
           </Box>
           <Box className={classes.avatarRight}>
