@@ -70,7 +70,7 @@ const TasksLists = () => {
           </Grid>
       </Grid>
       <Box height={20} />
-          <TaskListTable data={pendingData}/>      
+          <TaskListTable data={pendingData} status="Pending"/>      
         </Box>
       </Box>
     </>

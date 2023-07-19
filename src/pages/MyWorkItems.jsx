@@ -68,7 +68,7 @@ const CompletedTasks = (props) => {
             </Grid>
       </Grid>
       <Box height={20} />
-      <TaskListTable data={completedData}/>
+      <TaskListTable data={completedData} value="Completed"/>
     </Box> 
         </Box>
       </Box>
