@@ -11,6 +11,8 @@ import tasklist from '../Tasklist';
 import LinearProgress from '@mui/material/LinearProgress';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const MySwal = withReactContent(Swal)
 const useStyles = makeStyles(() => ({
@@ -85,7 +87,7 @@ function LinearProgressWithLabel(props) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1 }}>
-        <h6 className={props.value !== 100 && classes.element}>{props.value !== 100 ? 'Scanning...' : 'Scanning completed'} </h6>
+        <h6 className={`classes.element props.value !== 100 ? true: false`}>{props.value !== 100 ? 'Scanning...' : 'Scanning completed'} </h6>
         <LinearProgress variant="determinate" {...props} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
@@ -97,9 +99,13 @@ function LinearProgressWithLabel(props) {
   );
 }
 
+LinearProgressWithLabel.propTypes = {
+  value: PropTypes.number.isRequired
+}
+
 const scanningComplete = () => {
   MySwal.fire('Scanning Complete',
-  'You can download your report',
+  'Your scan report is ready',
   'success');
 };
 
@@ -133,6 +139,7 @@ const WorkItemDetail = () => {
   const [request, setRequest] = useState({});
   const [running, setRunning] = useState(false);
   const [progress, setProgress] = useState(0);
+  const { requestid } = useParams();
   let interval = undefined;
   useEffect(() => {
     if (running) {
@@ -142,7 +149,7 @@ const WorkItemDetail = () => {
     } else {
       clearInterval(interval);
     }
-  }, [running]);
+  }, [running, interval]);
 
   useEffect(() => {
     if (progress === 100) {
@@ -154,7 +161,7 @@ const WorkItemDetail = () => {
   }, [progress]);
 
   useEffect(() => {
-    let temp = tasklist.filter(e => e.request_id === "PR0000205789")[0]
+    let temp = tasklist.filter(e => e.request_id === requestid)[0]
     setRequest(temp)
     setRunning(true)
   }, [])
@@ -174,81 +181,81 @@ const WorkItemDetail = () => {
             <Grid item xs={3} style={{marginTop: '1rem'}}>
               <FormControl variant="standard">
                 <Typography variant="h6" className={classes.subhead}>Participant Id:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.participantId}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.participantId || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
                 <Typography variant="h6" className={classes.subhead}>PIN:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.pin}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.pin || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
                 <Typography variant="h6" className={classes.subhead}>DOB:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.dob}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.dob || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
                 <Typography variant="h6" className={classes.subhead}>Request Channel:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.request_channel}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.request_channel || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Created Date:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.created_date}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.created_date || ''}/>
               </FormControl>
             </Grid>
             <Grid item xs={1}></Grid>
             <Grid item xs={3} style={{marginTop: '1rem'}}>
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Requestor Name:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.first_name + " " + request.last_name}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.first_name || '' + " " + request.last_name  || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>SSN:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.ssn}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.ssn || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Employee Indicator:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.emp_indicator}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.emp_indicator|| ''} />
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Request Type:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.request_type}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.request_type || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Completion Date:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.info_completion_date}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.info_completion_date || ''}/>
               </FormControl>
             </Grid>
             <Grid item xs={1} style={{marginTop: '1rem'}}></Grid>
             <Grid item xs={3} style={{marginTop: '1rem'}}>
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Customer Type:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.entity}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.entity || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Gender:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.gender}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.gender || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>City:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.city}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.city || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Status:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.status}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.status || ''}/>
               </FormControl>
               <Box height={30} />
               <FormControl variant="standard">
               <Typography variant="h6" className={classes.subhead}>Assigned To:</Typography>
-                <Input inputProps={ariaLabel} className={classes.subInput} value={request.assigned_to}/>
+                <Input inputProps={ariaLabel} className={classes.subInput} value={request.assigned_to || ''}/>
               </FormControl>
             </Grid>
           </Grid>

@@ -69,7 +69,7 @@ const TaskListTable = (props) => {
       name: "Action",
       selector: (row)=> <div>
         <EditIcon onClick={()=>{navigate(`/myworkitems/${row.request_id}`)}} style={{color:'blue', cursor: 'pointer'}}/>
-        <DeleteIcon style={{color:'red', cursor: 'pointer'}}/></div>,  
+        <DeleteIcon style={{color:'#000000DE', cursor: 'pointer'}}/></div>,  
     },
    ];
 
