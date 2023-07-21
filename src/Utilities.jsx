@@ -1,2 +1,2 @@
 export const TaskListHeadData = 
-["RequestId","ParticipantId","PIN","Requestor Name","Equity","Request Type","Status","Created Date","Due Date","Action"];
+["RequestId","ParticipantId","PIN","Requestor Name","Entity","Request Type","Status","Created Date","Due Date","Action"];

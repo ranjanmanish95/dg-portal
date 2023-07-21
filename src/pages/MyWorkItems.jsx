@@ -44,6 +44,7 @@ const useStyles = makeStyles(() => ({
 const CompletedTasks = (props) => {
   const classes = useStyles();
   const [completedData, setCompletedData] = useState([]);
+
   const getTaskListData = ()=>{
     const data = TaskList;
     const completedData = data.filter((item)=>item.status === 'COMPLETED');
@@ -51,7 +52,7 @@ const CompletedTasks = (props) => {
    }
 
    useEffect(()=>{
-    getTaskListData(); 
+    getTaskListData();
     },[]);
   return (
     <>
@@ -61,6 +62,7 @@ const CompletedTasks = (props) => {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Typography variant="h1" className={classes.headingone}>Completed Tasks</Typography>
       <Box sx={{ width: '100%' }}>
+      <Grid xs={12} lg={12} md={12} className='invoice-summary'/>
       <Box height={40} />  
       <Grid container spacing={2}>
             <Grid item xs={4} className={classes.searchBarStyle}>
