@@ -23,6 +23,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import {useNavigate} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 const useStyles = makeStyles(() => ({
   sideText: {
@@ -159,7 +160,7 @@ export default function SideNav() {
         <Toolbar className={classes.toolbarStyle}>
           <Box>
           <Typography variant="h1" noWrap component="div">
-            ACME Bank, Inc.
+            ACME Corp.
           </Typography>
           </Box>
           <Box className={classes.avatarRight}>
@@ -173,8 +174,7 @@ export default function SideNav() {
             className={classes.navbar_menu_right_bell}
           >
             <Box>
-              <span className={classes.navbar_menu_right_bell_value}></span>
-              <span><NotificationsSharpIcon /></span>
+              <span><PowerSettingsNewIcon /></span>
             </Box>
             </Box>
             </Box>

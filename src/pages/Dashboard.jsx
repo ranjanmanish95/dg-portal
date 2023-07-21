@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import SideNav from "../SideNav";
 import Box from "@mui/material/Box";
 import '../App.css';
 
-const Dashboard = (props) => {
+const Dashboard = () => {
   const YELLOWFIN_URL="http://192.168.6.56:8080";
 
   return (

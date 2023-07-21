@@ -54,7 +54,7 @@ function App() {
        <Route path='/' exact element={<Login/>}/>
        <Route path='/dashboard' element={<DashboardT/>}/>
        <Route path='/completedtasks' element={<CompletedTasks/>}/>
-       <Route path='/myworkitems/requestid' element={<WorkItemDetail/>}/>
+       <Route path='/myworkitems/:requestid' element={<WorkItemDetail/>}/>
        <Route path='/pendingtasks' element={<PendingTasks/>}/>
      </Routes>
     </BrowserRouter>
