@@ -44,6 +44,7 @@ const useStyles = makeStyles(() => ({
 const TasksLists = () => {
   const classes = useStyles();
   const [pendingData, setPendingData] = useState([]);
+  const YELLOWFIN_URL="http://192.168.6.56:8080";
   
   const getTaskListData = ()=>{
     const data = TaskList;
@@ -58,11 +59,12 @@ const TasksLists = () => {
 
   return (
     <>
-      <Box height={10} />
+     <iframe title="dashboard" src={`${YELLOWFIN_URL}/RunDashboard.i4;?dashUUID=c420d97a-79ee-42d9-9315-cfa47b6e2a63&primaryOrg=1&clientOrg=1`} width="100%" style={{height:"50vh", border: "none", marginTop: "-20px"}}></iframe>
       <Box sx={{ display: "flex" }}>
         <SideNav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <Typography variant="h1" className={classes.headingone}>Pending Tasks</Typography>
+          <div style={{marginTop: "-10rem"}}>
+          <Typography variant="h1" className={classes.headingone}>List of Pending Tasks</Typography>
           <Box height={40} />  
           <Grid container spacing={2}>
           <Grid item xs={4} className={classes.searchBarStyle}>
@@ -70,9 +72,11 @@ const TasksLists = () => {
           </Grid>
       </Grid>
       <Box height={20} />
-          <TaskListTable data={pendingData} status="Pending"/>      
+          <TaskListTable data={pendingData} status="Pending"/>
+          </div>      
         </Box>
       </Box>
+      
     </>
   );
 };
