@@ -41,44 +41,44 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const CompletedTasks = (props) => {
+const TasksLists = () => {
   const classes = useStyles();
-  const [completedData, setCompletedData] = useState([]);
+  const [pendingData, setPendingData] = useState([]);
   const YELLOWFIN_URL="http://192.168.6.56:8080";
-
+  
   const getTaskListData = ()=>{
     const data = TaskList;
-    const completedData = data.filter((item)=>item.status === 'COMPLETED');
-    setCompletedData(completedData);
+    const pendingData = data.filter((item)=>item.status === 'IN PROCESS' || item.status === 'LETTER SENT');
+    setPendingData(pendingData);
    }
 
    useEffect(()=>{
-    getTaskListData();
+    getTaskListData(); 
     },[]);
+
+
   return (
     <>
-     <iframe title="dashboard" src={`${YELLOWFIN_URL}/RunDashboard.i4;?dashUUID=4fa1a74b-bfb8-42fa-9249-70d0bf4b2cc8&primaryOrg=1&clientOrg=1`} width="100%" style={{height:"50vh", border: "none"}}></iframe>
+     <iframe title="dashboard" src={`${YELLOWFIN_URL}/RunDashboard.i4;?dashUUID=c420d97a-79ee-42d9-9315-cfa47b6e2a63&primaryOrg=1&clientOrg=1`} width="100%" style={{height:"50vh", border: "none", marginTop: "-3rem"}}></iframe>
       <Box sx={{ display: "flex" }}>
         <SideNav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <div style={{marginTop: "-10rem"}}>
-      <Typography variant="h1" className={classes.headingone}>List of Completed Tasks</Typography>   
-      <Box sx={{ width: '100%' }}>
-      <Grid xs={12} lg={12} md={12} className='invoice-summary'/>
-      <Box height={40} />  
-      <Grid container spacing={2}>
-            <Grid item xs={4} className={classes.searchBarStyle}>
-            <SearchBar />
-            </Grid>
+          <div style={{marginTop: "-12rem"}}>
+          <Typography variant="h1" className={classes.headingone}>List of Pending Tasks</Typography>
+          <Box height={40} />  
+          <Grid container spacing={2}>
+          <Grid item xs={4} className={classes.searchBarStyle}>
+          <SearchBar />
+          </Grid>
       </Grid>
       <Box height={20} />
-      <TaskListTable data={completedData} value="Completed"/>
-    </Box> 
-    </div>
+          <TaskListTable data={pendingData} status="Pending"/>
+          </div>      
         </Box>
       </Box>
+      
     </>
   );
 };
 
-export default CompletedTasks;
+export default TasksLists;

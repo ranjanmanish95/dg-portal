@@ -11,7 +11,8 @@ const Dashboard = () => {
     <SideNav/>
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
     <Box height={20} />  
-    <iframe title="dashboard" src={`${YELLOWFIN_URL}/RunDashboard.i4?dashUUID=b0950969-a299-4d28-9174-db91ddd97912&primaryOrg=1&clientOrg=1`} width="100%" style={{height:"270vh", border: "none"}}></iframe>
+    <iframe title="dashboard" src={`${YELLOWFIN_URL}/RunDashboard.i4?dashUUID=a2626f28-24c9-4b9f-b201-8063a71a0a71&primaryOrg=1&clientOrg=1`} width="105%" 
+      style={{height:"270vh", border: "none", marginLeft:"-4rem"}}></iframe>
     </Box>
   </Box>
   )

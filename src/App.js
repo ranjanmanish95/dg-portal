@@ -1,12 +1,11 @@
 import './App.css';
-import CompletedTasks from './pages/MyWorkItems';
+import CompletedTasks from './pages/CompletedTask';
 import DashboardT from './pages/Dashboard';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import PendingTasks from './pages/TasksLists';
+import PendingTasks from './pages/PendingTasks';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import WorkItemDetail from './pages/WorkItemDetail';
 import Login from './pages/Login';
-import { Dashboard } from '@mui/icons-material';
 
 const theme = createTheme({
 });

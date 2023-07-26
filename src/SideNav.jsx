@@ -167,7 +167,7 @@ export default function SideNav() {
           <Stack direction="row" spacing={1} className={classes.avatarstyle}>
       <Avatar>M</Avatar>
       <Typography variant="h4" noWrap component="div">
-            Matt Thomas <br/><span>Chief Complaince Officer</span>
+            Matt Thomas <br/><span>Data Compliance Agent</span>
       </Typography>
     </Stack>
           <Box
